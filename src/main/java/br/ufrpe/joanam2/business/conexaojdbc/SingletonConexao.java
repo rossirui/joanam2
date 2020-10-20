@@ -1,4 +1,4 @@
-package br.ufrpe.joanam2.conexaojdbc;
+package br.ufrpe.joanam2.business.conexaojdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,8 @@ import java.sql.DriverManager;
 public class SingletonConexao {
 
 	
-	private static String url = "jdbc:postgresql://localhost:5432/prefixado";
-	private static String password = "porra";
+	private static String url = "jdbc:postgresql://localhost:5432/renda_fixa";
+	private static String password = "postgres";
 	private static String user = "postgres";
 	private static Connection conexao = null;
 	

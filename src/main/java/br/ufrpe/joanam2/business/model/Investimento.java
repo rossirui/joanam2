@@ -1,17 +1,37 @@
-package br.ufrpe.joanam2.entities;
+package br.ufrpe.joanam2.business.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Investimento {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Investimento implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	private int tipo;
+	
 	private BigDecimal montante;
+	
 	private BigDecimal valorRendimento;
+	
 	private String indice;
+	
 	private int prazoResgate;
+	
 	private LocalDate dataInvestimento;
+	
 	private BigDecimal montanteResgatado;
+	
+	private Usuario usuario;
 	
 	public Investimento() {
 		
@@ -81,29 +101,12 @@ public class Investimento {
 		this.montanteResgatado = montanteResgatado;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Investimento other = (Investimento) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-	
+
 }
