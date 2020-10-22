@@ -16,25 +16,25 @@ public class Investimento implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	private int tipo;
-	
+
 	private BigDecimal montante;
-	
+
 	private BigDecimal valorRendimento;
-	
+
 	private String indice;
-	
+
 	private int prazoResgate;
-	
+
 	private LocalDate dataInvestimento;
-	
+
 	private BigDecimal montanteResgatado;
-	
+
 	private Usuario usuario;
-	
+
 	public Investimento() {
-		
+
 	}
 
 	public Integer getId() {
