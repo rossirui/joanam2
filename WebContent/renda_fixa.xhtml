@@ -9,77 +9,87 @@
 </h:head>
 
 <h:body>
-	<h1>TESTE</h1>
+	<h1>RENDA FIXA</h1>
 	<h:form>
 
-		<h:outputLabel value="ID" />
-		<h:inputText value="#{investimentoBean.investimento.id}"
-			readonly="true" />
+		<h:panelGrid columns="6">
+			<h:outputLabel value="Id	" />
+			<h:inputText value="#{investimentoBean.investimento.id}" />
 
-		<br />
-		<h:outputLabel value="Tipo" />
-		<h:inputText value="#{investimentoBean.investimento.tipo}" />
+			<h:outputLabel value="Tipo" />
+			<h:inputText value="#{investimentoBean.investimento.tipo}" />
 
-		<br />
-		<h:outputLabel value="Montante" />
-		<h:inputText value="#{investimentoBean.investimento.montante}" />
+			<h:outputLabel value="Montante" />
+			<h:inputText value="#{investimentoBean.investimento.montante}" />
 
-		<br />
-		<h:outputLabel value="Rendimento" />
-		<h:inputText value="#{investimentoBean.investimento.valorRendimento}" />
+			<h:outputLabel value="Rendimento" />
+			<h:inputText value="#{investimentoBean.investimento.valorRendimento}" />
 
-		<br />
-		<h:outputLabel value="Índice" />
-		<h:inputText value="#{investimentoBean.investimento.indice}" />
+			<h:outputLabel value="Índice" />
+			<h:inputText value="#{investimentoBean.investimento.indice}" />
 
-		<br />
-		<h:outputLabel value="Prazo" />
-		<h:inputText value="#{investimentoBean.investimento.prazoResgate}" />
+			<h:outputLabel value="Prazo" />
+			<h:inputText value="#{investimentoBean.investimento.prazoResgate}" />
 
-		<br />
-		<br />
-		<h:commandButton value="Novo" action="#{investimentoBean.novo}" />
+			<h:outputLabel />
+			<h:panelGroup>
+				<h:commandButton value="Novo" action="#{investimentoBean.novo}" />
+				<h:commandButton value="Salvar" action="#{investimentoBean.salvar}" />
+			</h:panelGroup>
 
-		<br />
-		<h:commandButton value="Salvar" action="#{investimentoBean.salvar}" />
+			<h:outputLabel />
+			<h:panelGroup>
+				<h:commandButton value="Exportar" action="#{investimentoBean.exportar}" />
+				<h:commandButton value="Relatório" action="#{investimentoBean.relatorio}" />
+			</h:panelGroup>
+		</h:panelGrid>
 
-		<br />
-		<h:commandButton value="Excluir" action="#{investimentoBean.excluir}" />
-		
-		<h:dataTable value="#{investimentoBean.investimentos}" var="inv">
+		<h:dataTable value="#{investimentoBean.investimentos}" var="inv" border="6" >
+			<f:facet name="header">
+				Investimentos Cadastrados
+			</f:facet>
+
 			<h:column>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{inv.id}" />
 			</h:column>
-			
+
 			<h:column>
+				<f:facet name="header">Tipo</f:facet>
 				<h:outputText value="#{inv.tipo}" />
 			</h:column>
-			
+
 			<h:column>
+				<f:facet name="header">Montante</f:facet>
 				<h:outputText value="#{inv.montante}" />
 			</h:column>
-			
+
 			<h:column>
+				<f:facet name="header">Valor de Rendimento</f:facet>
 				<h:outputText value="#{inv.valorRendimento}" />
 			</h:column>
-			
+
 			<h:column>
+				<f:facet name="header">Índice</f:facet>
 				<h:outputText value="#{inv.indice}" />
 			</h:column>
-			
+
 			<h:column>
+				<f:facet name="header">Prazo de Resgate</f:facet>
 				<h:outputText value="#{inv.prazoResgate}" />
 			</h:column>
-			
+
 			<h:column>
 				<h:commandLink value="Editar">
-					<f:setPropertyActionListener value="#{inv}" target="#{investimentoBean.investimento}" />
+					<f:setPropertyActionListener value="#{inv}"
+						target="#{investimentoBean.investimento}" />
 				</h:commandLink>
 			</h:column>
 
 			<h:column>
 				<h:commandLink value="Excluir" action="#{investimentoBean.excluir}">
-					<f:setPropertyActionListener value="#{inv}" target="#{investimentoBean.investimento}" />
+					<f:setPropertyActionListener value="#{inv}"
+						target="#{investimentoBean.investimento}" />
 				</h:commandLink>
 			</h:column>
 		</h:dataTable>

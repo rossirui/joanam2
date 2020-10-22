@@ -58,5 +58,11 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.0</version>
+		</dependency>
+
 	</dependencies>
 </project>

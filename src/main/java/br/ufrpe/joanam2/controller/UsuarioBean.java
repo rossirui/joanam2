@@ -1,17 +1,17 @@
-package br.ufrpe.joanam2.controller.bean;
+package br.ufrpe.joanam2.controller;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.ufrpe.joanam2.business.dao.GenericoDao;
-import br.ufrpe.joanam2.business.model.Usuario;
+import br.ufrpe.joanam2.model.dao.UsuarioDao;
+import br.ufrpe.joanam2.model.entity.Usuario;
 
 @ViewScoped
 @ManagedBean(name = "usuarioBean")
 public class UsuarioBean {
 	
 	private Usuario usuario = new Usuario();
-	private GenericoDao<Usuario> dao = new GenericoDao<Usuario>();
+	private UsuarioDao dao = new UsuarioDao();
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -21,22 +21,24 @@ public class UsuarioBean {
 		this.usuario = usuario;
 	}
 
-	public GenericoDao<Usuario> getGenericoDao() {
+	public UsuarioDao getDao() {
 		return dao;
 	}
 
-	public void setGenericoDao(GenericoDao<Usuario> genericoDao) {
-		this.dao = genericoDao;
+	public void setDao(UsuarioDao dao) {
+		this.dao = dao;
 	}
-
+	
 	public String salvar() {
 		dao.salvar(usuario);
 		usuario = new Usuario();
 		return "";
 	}
-	
-	public String atualizar() {
-		usuario = dao.atualizar(usuario);
+		
+	public String logar() {
+		if(dao.validar(usuario)) {
+			return "renda_fixa";
+		}
 		return "";
 	}
 

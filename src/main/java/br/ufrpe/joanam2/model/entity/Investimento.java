@@ -1,4 +1,4 @@
-package br.ufrpe.joanam2.business.model;
+package br.ufrpe.joanam2.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

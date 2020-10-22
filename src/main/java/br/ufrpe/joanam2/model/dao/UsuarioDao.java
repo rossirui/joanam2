@@ -1,68 +1,67 @@
-package br.ufrpe.joanam2.business.dao;
+package br.ufrpe.joanam2.model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import br.ufrpe.joanam2.business.model.Investimento;
 import br.ufrpe.joanam2.jpautil.JpaUtil;
+import br.ufrpe.joanam2.model.entity.Usuario;
 
-public class InvestimentoDao {
-
-	public Investimento salvar(Investimento investimento) {
+public class UsuarioDao {
+	
+	public Usuario salvar(Usuario usuario) {
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 			
-		if(investimento.getId() == null) {
-			entityManager.persist(investimento);
+		if(usuario.getId() == null) {
+			entityManager.persist(usuario);
 		} else {
-			investimento = entityManager.merge(investimento);
+			usuario = entityManager.merge(usuario);
 		}
 		
 		entityTransaction.commit();
 		entityManager.close();
 		
-		return investimento;
+		return usuario;
 	}
 	
-	public Investimento buscarPorId(Investimento investimento) {
+	public Usuario buscarPorId(Usuario usuario) {
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
-		investimento = entityManager.find(Investimento.class, investimento.getId());
+		usuario = entityManager.find(Usuario.class, usuario.getId());
 		
 		entityTransaction.commit();
 		entityManager.close();
 		
-		return investimento;
+		return usuario;
 	}
 
-	public Investimento excluir(Investimento investimento) {
+	public Usuario excluir(Usuario usuario) {
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
-		investimento = buscarPorId(investimento);
-		entityManager.remove(investimento);
+		usuario = buscarPorId(usuario);
+		entityManager.remove(usuario);
 		
 		entityTransaction.commit();
 		entityManager.close();
 		
-		return investimento;
+		return usuario;
 	}
 
-	public List<Investimento> buscar() {
-		String sql = "SELECT * FROM investimento";
+	public List<Usuario> buscar() {
+		String sql = "SELECT i FROM Usuario i";
 		
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
-		List<Investimento> lista = (List<Investimento>)entityManager.createQuery(sql);
+		List<Usuario> lista = entityManager.createQuery(sql).getResultList();
 		
 		entityTransaction.commit();
 		entityManager.close();
@@ -70,5 +69,8 @@ public class InvestimentoDao {
 		return lista;
 	}
 
-
+	public boolean validar(Usuario usuario) {
+		
+		return true;
+	}
 }

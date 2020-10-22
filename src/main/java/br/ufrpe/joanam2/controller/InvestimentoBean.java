@@ -1,4 +1,4 @@
-package br.ufrpe.joanam2.controller.bean;
+package br.ufrpe.joanam2.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,16 +7,20 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
-import br.ufrpe.joanam2.business.dao.InvestimentoDao;
-import br.ufrpe.joanam2.business.model.Investimento;
+import br.ufrpe.joanam2.model.InvestimentoCadastro;
+import br.ufrpe.joanam2.model.dao.InvestimentoDao;
+import br.ufrpe.joanam2.model.entity.Investimento;
 
 @ViewScoped
 @ManagedBean(name="investimentoBean")
 public class InvestimentoBean {
 	
 	private Investimento investimento = new Investimento();
-	private InvestimentoDao dao = new InvestimentoDao();
 	private List<Investimento> investimentos = new ArrayList<Investimento>();
+	
+	private InvestimentoCadastro getCadastro() {
+		return InvestimentoCadastro.getInstance();
+	}
 		
 	public Investimento getInvestimento() {
 		return investimento;
@@ -24,14 +28,6 @@ public class InvestimentoBean {
 
 	public void setInvestimento(Investimento investimento) {
 		this.investimento = investimento;
-	}
-
-	public InvestimentoDao getDao() {
-		return dao;
-	}
-
-	public void setDao(InvestimentoDao dao) {
-		this.dao = dao;
 	}
 
 	public List<Investimento> getInvestimentos() {
@@ -48,18 +44,13 @@ public class InvestimentoBean {
 	}
 	
 	public String salvar() {
-		dao.salvar(investimento);
+		investimento = getCadastro().salvar(investimento);
 		listarInvestimentos();
-		return "";
-	}
-	
-	public String atualizar() {
-		investimento = dao.salvar(investimento);
 		return "";
 	}
 
 	public String excluir() {
-		dao.excluir(investimento);
+		getCadastro().excluir(investimento);
 		investimento = new Investimento();
 		listarInvestimentos();
 		return "";
@@ -67,7 +58,16 @@ public class InvestimentoBean {
 	
 	@PostConstruct
 	public void listarInvestimentos() {
-		investimentos = dao.buscar();
+		investimentos = getCadastro().buscar();
+	}
+	
+	public String relatorio() {
+		return "";
+	}
+
+	public String exportarCSV() {
+		getCadastro().exportarCSV();
+		return "";
 	}
 
 }

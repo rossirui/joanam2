@@ -6,8 +6,8 @@
 	
 	<persistence-unit name="joanam2">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>br.ufrpe.joanam2.business.model.Usuario</class>
-		<class>br.ufrpe.joanam2.business.model.Investimento</class>
+		<class>br.ufrpe.joanam2.model.entity.Usuario</class>
+		<class>br.ufrpe.joanam2.model.entity.Investimento</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/renda_fixa"/>
@@ -17,7 +17,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="	" value="update"/>
 		</properties>
 	</persistence-unit>
 	

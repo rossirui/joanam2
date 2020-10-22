@@ -1,4 +1,4 @@
-package br.ufrpe.joanam2.business.model;
+package br.ufrpe.joanam2.model.entity;
 
 import java.io.Serializable;
 
@@ -16,10 +16,6 @@ public class Usuario implements Serializable {
 	private Integer id;
 	private String cpf;
 	private String senha;
-	
-	public Usuario() {
-		
-	}
 
 	public Integer getId() {
 		return id;
