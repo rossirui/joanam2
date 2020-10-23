@@ -12,12 +12,18 @@
 	<h1>RENDA FIXA</h1>
 	<h:form>
 
-		<h:panelGrid columns="6">
+		<h:panelGrid columns="8">
 			<h:outputLabel value="Id	" />
 			<h:inputText value="#{investimentoBean.investimento.id}" />
 
 			<h:outputLabel value="Tipo" />
 			<h:inputText value="#{investimentoBean.investimento.tipo}" />
+
+			<h:outputLabel value="Data de Investimento" />
+			<h:inputText
+				value="#{investimentoBean.investimento.dataInvestimento}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
 
 			<h:outputLabel value="Montante" />
 			<h:inputText value="#{investimentoBean.investimento.montante}" />
@@ -31,6 +37,10 @@
 			<h:outputLabel value="Prazo" />
 			<h:inputText value="#{investimentoBean.investimento.prazoResgate}" />
 
+			<h:outputLabel value="Montante Resgatado" />
+			<h:inputText
+				value="#{investimentoBean.investimento.montanteResgatado}" />
+
 			<h:outputLabel />
 			<h:panelGroup>
 				<h:commandButton value="Novo" action="#{investimentoBean.novo}" />
@@ -39,12 +49,15 @@
 
 			<h:outputLabel />
 			<h:panelGroup>
-				<h:commandButton value="Exportar" action="#{investimentoBean.exportarCSV}" />
-				<h:commandButton value="Relatório" action="#{investimentoBean.relatorio}" />
+				<h:commandButton value="Exportar"
+					action="#{investimentoBean.exportarCSV}" />
+				<h:commandButton value="Relatório"
+					action="#{investimentoBean.relatorio}" />
 			</h:panelGroup>
 		</h:panelGrid>
 
-		<h:dataTable value="#{investimentoBean.investimentos}" var="inv" border="6" >
+		<h:dataTable value="#{investimentoBean.investimentos}" var="inv"
+			border="6">
 			<f:facet name="header">
 				Investimentos Cadastrados
 			</f:facet>
@@ -57,6 +70,11 @@
 			<h:column>
 				<f:facet name="header">Tipo</f:facet>
 				<h:outputText value="#{inv.tipo}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data de Investimento</f:facet>
+				<h:outputText value="#{inv.dataInvestimento}" />
 			</h:column>
 
 			<h:column>
@@ -77,6 +95,11 @@
 			<h:column>
 				<f:facet name="header">Prazo de Resgate</f:facet>
 				<h:outputText value="#{inv.prazoResgate}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Montante Resgatado</f:facet>
+				<h:outputText value="#{inv.montanteResgatado}" />
 			</h:column>
 
 			<h:column>

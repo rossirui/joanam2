@@ -62,7 +62,7 @@ public class InvestimentoBean {
 	}
 	
 	public String relatorio() {
-		return "";
+		return "relatorio";
 	}
 
 	public String exportarCSV() {

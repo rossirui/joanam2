@@ -3,6 +3,7 @@ package br.ufrpe.joanam2.model.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Investimento implements Serializable {
 
 	private int prazoResgate;
 
-	private LocalDate dataInvestimento;
+	private Date dataInvestimento;
 
 	private BigDecimal montanteResgatado;
 
@@ -85,11 +86,11 @@ public class Investimento implements Serializable {
 		this.prazoResgate = prazoResgate;
 	}
 
-	public LocalDate getDataInvestimento() {
+	public Date getDataInvestimento() {
 		return dataInvestimento;
 	}
 
-	public void setDataInvestimento(LocalDate dataInvestimento) {
+	public void setDataInvestimento(Date dataInvestimento) {
 		this.dataInvestimento = dataInvestimento;
 	}
 

@@ -1,9 +1,11 @@
 package br.ufrpe.joanam2.model;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.opencsv.bean.StatefulBeanToCsv;
@@ -12,6 +14,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import br.ufrpe.joanam2.model.dao.InvestimentoDao;
+import br.ufrpe.joanam2.model.dto.InvestimentoDTO;
 import br.ufrpe.joanam2.model.entity.Investimento;
 
 public class InvestimentoCadastro {
@@ -48,7 +51,8 @@ public class InvestimentoCadastro {
 		List<Investimento> investimentos = buscar();
 		
 		try {
-			Writer writer = Files.newBufferedWriter(Paths.get("C:\\Users\\ruiro\\Documents\\Rui\\investimentos.csv"));
+			System.out.println("/ -> " + new File(".").getCanonicalPath());
+			Writer writer = Files.newBufferedWriter(Paths.get(".\\investimentos.csv"));
 			StatefulBeanToCsv<Investimento> beanToCsv = new StatefulBeanToCsvBuilder(writer)
 															.withSeparator(';')
 															.build();
@@ -66,6 +70,10 @@ public class InvestimentoCadastro {
 
 	public List<Investimento> buscar() {
 		return investimentoDao.buscar();
+	}
+	
+	public List<InvestimentoDTO> buscarPorTipo() {
+		return investimentoDao.buscarPorTipo();
 	}
 
 	public Investimento excluir(Investimento investimento) {
