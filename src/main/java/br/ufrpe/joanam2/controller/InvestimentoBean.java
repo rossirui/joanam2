@@ -5,10 +5,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.view.ViewScoped;
 
 import br.ufrpe.joanam2.model.InvestimentoCadastro;
-import br.ufrpe.joanam2.model.dao.InvestimentoDao;
 import br.ufrpe.joanam2.model.entity.Investimento;
 
 @ViewScoped
@@ -37,7 +38,7 @@ public class InvestimentoBean {
 	public void setInvestimentos(List<Investimento> investimentos) {
 		this.investimentos = investimentos;
 	}
-	
+		
 	public String novo() {
 		investimento = new Investimento();
 		return "";

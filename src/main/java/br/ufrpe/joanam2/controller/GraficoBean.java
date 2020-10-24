@@ -59,7 +59,11 @@ public class GraficoBean {
 
 		for (InvestimentoDTO dto : investimentosDTO) {
 			
-			String item = Integer.toString(dto.getTipo());
+			String item = "Pós-fixado";
+			if(dto.getTipo() == 1) {
+				item = "Prefixado";
+			}
+			
 			int valor = (int)dto.getTotal();
 			pieModel1.set(item, valor);
 			

@@ -13,11 +13,14 @@
 	<h:form>
 
 		<h:panelGrid columns="8">
-			<h:outputLabel value="Id	" />
+			<h:outputLabel value="Id" />
 			<h:inputText value="#{investimentoBean.investimento.id}" />
 
 			<h:outputLabel value="Tipo" />
-			<h:inputText value="#{investimentoBean.investimento.tipo}" />
+			<h:selectOneMenu value="#{investimentoBean.investimento.tipo}">
+				<f:selectItem itemValue="1" itemLabel="PRE-FIXADO" />
+				<f:selectItem itemValue="2" itemLabel="POS-FIXADO" />
+			</h:selectOneMenu>
 
 			<h:outputLabel value="Data de Investimento" />
 			<h:inputText

@@ -35,17 +35,6 @@ public class InvestimentoCadastro {
 	public Investimento salvar(Investimento investimento) {
 		return investimentoDao.salvar(investimento);
 	}
-
-	
-	private String Investimento2String(Investimento investimento) {
-		return investimento.toString();
-	}
-	
-	public String exportarCSV2() {
-		List<Investimento> investimentos = buscar();
-
-		return "";
-	}
 	
 	public String exportarCSV() {
 		List<Investimento> investimentos = buscar();
@@ -74,6 +63,10 @@ public class InvestimentoCadastro {
 	
 	public List<InvestimentoDTO> buscarPorTipo() {
 		return investimentoDao.buscarPorTipo();
+	}
+	
+	public Investimento buscarPorId(Investimento investimento) {
+		return investimentoDao.buscarPorId(investimento);
 	}
 
 	public Investimento excluir(Investimento investimento) {
